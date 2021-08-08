@@ -20,6 +20,7 @@ class GameComponent extends Component {
         this.setState({
             imgSrc: `${cuoc}`,
             visibility: 'visible',
+            visibility1: 'hidden',
         })
     }
 
