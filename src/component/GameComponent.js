@@ -12,6 +12,7 @@ class GameComponent extends Component {
 
     state = {
         visibility: 'hidden',
+        visibility1: 'hidden',
         imgSrc: '',
     }
 
@@ -22,9 +23,15 @@ class GameComponent extends Component {
         })
     }
 
+    changeVisibility = () => {
+        this.setState({
+            visibility1: 'visible',
+        })
+    }
+
     render() {
 
-        let {soBanChoi,soBanThang} = this.props.oanTuTiReducer
+        let {soBanChoi,soBanThang,ngauNhien} = this.props.oanTuTiReducer
 
        
 
@@ -36,7 +43,7 @@ class GameComponent extends Component {
                         <div className="player__item">
                             <div className = "speech__item">
                                 
-                                    <img className="src__player" style={{visibility: `${this.state.visibility}`}} src={this.state.imgSrc} alt="" />
+                                    <img style={{visibility: `${this.state.visibility}`}} src={this.state.imgSrc} alt="" />
                                 <div className = "speech__bubble">
                                 </div>
                             </div>
@@ -45,7 +52,7 @@ class GameComponent extends Component {
                             <div>
                                 <button className="button__item" onClick = {() => {
                                     const action = {
-                                        type: 'DAT CUOC',
+                                        type: 'DAT_CUOC',
                                         banChon: 'Keo'
                                     }
                                     this.props.dispatch(action);
@@ -53,7 +60,7 @@ class GameComponent extends Component {
                                 }}> <img src={Keo} alt="keo.png" /></button>
                                 <button className="button__item" onClick = {() => {
                                     const action = {
-                                        type: 'DAT CUOC',
+                                        type: 'DAT_CUOC',
                                         banChon: 'Bua'
                                     }
                                     this.props.dispatch(action);
@@ -61,7 +68,7 @@ class GameComponent extends Component {
                                 }}> <img src={Bua} alt="bua.png"/></button>
                                 <button className="button__item" onClick = {() => {
                                     const action = {
-                                        type: 'DAT CUOC',
+                                        type: 'DAT_CUOC',
                                         banChon: 'Bao'
                                     }
                                     this.props.dispatch(action);
@@ -84,6 +91,7 @@ class GameComponent extends Component {
                                         type:'PLAY_GAME'
                                     }
                                     this.props.dispatch(action);
+                                    this.changeVisibility();
                                 }}> Play Game</button>
                             </div>
                     </div>
@@ -94,7 +102,7 @@ class GameComponent extends Component {
                             <div>
                                 <div className="player__computer__item">
                                     <div className = "speech__item">
-                                       
+                                        <img style={{visibility: `${this.state.visibility1}`}} src={ngauNhien} alt="" />
                                         <div className = "speech__bubble"></div>
                                     </div>
                                         <img src={PlayerComputer} alt="hinhminhhoa" />

@@ -3,7 +3,8 @@ const stateDefault = {
     soBanThang:0,
     hinhAnh:'',
     banChon:'',
-    display: 'none',
+    ngauNhien:'',
+
 }
 
 export const oanTuTiReducer = (state = stateDefault, action) => {
@@ -12,6 +13,8 @@ export const oanTuTiReducer = (state = stateDefault, action) => {
 
         case 'DAT_CUOC': {
             state.banChon = action.banChon;
+            console.log("banChon",state.banChon)
+            
             return {...state};
         }
 
@@ -25,7 +28,7 @@ export const oanTuTiReducer = (state = stateDefault, action) => {
                 state.hinhAnh = 'Bua';
             }
 
-            console.log('state',state.hinhAnh)
+            console.log("hinhAnh",state.hinhAnh)
 
             if(state.hinhAnh === 'Keo' && state.banChon === 'Bua'){
                 state.soBanThang += 1;
@@ -35,8 +38,15 @@ export const oanTuTiReducer = (state = stateDefault, action) => {
                 state.soBanThang += 1;
             }
 
+            if(state.hinhAnh === 'Keo'){
+                state.ngauNhien = '../image/keo.png';
+            } else if (state.hinhAnh === 'Bua'){
+                state.ngauNhien = '../image/bua.png';
+            } else if (state.hinhAnh === 'Bao') {
+                state.ngauNhien = '../image/bao.png';
+            }
+
             state.soBanChoi += 1;
-            
 
             return {...state}
             
